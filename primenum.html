@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime numbers</title>
+</head>
+<body>
+<h1 style="background: aliceblue " > Hiển thị danh sách n số nguyên tố đầu tiên </h1>
+<input id="num" type="number"> Nhập vào số nguyên n <br>
+<input type="button" onclick="ListPrime()" value="Tính" >
+<p id="result"></p>
+    <script>
+        function primeNumber(n) {
+            let result = true;
+            if (n < 2){
+                result = false;
+            }
+            else if (n == 2){
+                result = true;
+            }
+            else if (n % 2 == 0){
+                result = false;
+            }
+            else{
+                for (var i = 3; i < Math.sqrt(n); i+=2)
+                {
+                    if (n % i == 0){
+                        result = false;
+                        break;
+                    }
+                }
+            }
+            if (result == true){return true;}
+            else    {return false}
+        }
+
+    function ListPrime() {
+            res= "";
+            let c =0;
+            let n =2;
+            let num = +document.getElementById('num').value;
+            while (c<num) {
+                if (primeNumber(n)) {
+                    res+= n +"; ";
+                    c++;
+                }
+                n++;
+            }
+            document.getElementById('result').innerText = res;
+    }
+    </script>
+</body>
+</html>
